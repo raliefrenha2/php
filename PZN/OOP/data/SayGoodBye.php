@@ -35,6 +35,16 @@ trait canRun
     public abstract function run(): void;
 }
 
+trait all
+{
+    // use canRun;
+    use  SayGoodBye, SayHello, HasName, canRun {
+        // trait function override
+        // hello as private;
+        // goodBye as private;
+    }
+}
+
 class ParentPerson
 {
     public function goodBye(?string $name): void
@@ -49,12 +59,7 @@ class ParentPerson
 }
 class Person extends ParentPerson
 {
-    // use canRun;
-    use  SayGoodBye, SayHello, HasName, canRun {
-        // trait function override
-        // hello as private;
-        // goodBye as private;
-    }
+    use all;
     // function di class ParentPerson di override oleh function yang di trait  
     public function run(): void
     {
